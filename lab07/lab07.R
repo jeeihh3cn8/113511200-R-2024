@@ -5,10 +5,11 @@ html <- htmlParse(GET("https://disp.cc/m/"))
 ht_title <- xpathApply(html, "//div[@class='ht_title']", xmlValue)
 ht_desc <- xpathApply(html, "//div[@class='ht_desc']", xmlValue)
 
-separator <- rep("---", length(ht_title))
+separator <- "---"
 data <- cbind( ht_title, ht_desc, separator )
 
-file.path <- "./113511200.txt"
+file.path <- "GitHub/113511200-R-2024/lab07/113511200.txt"
+#我的lab07資料夾放在Document的Github的113511200-R-2024的資料夾內，所以相對路徑的名字比較長
 write.table(
   data,
   file = file.path,
@@ -18,4 +19,7 @@ write.table(
   row.names = FALSE,
   col.names = FALSE
 )
+file.exists("GitHub/113511200-R-2024/lab07/113511200.txt")
+
+
 
