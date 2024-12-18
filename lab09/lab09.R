@@ -1,7 +1,5 @@
-# 載入 plumber 套件
 library(plumber)
 
-# 建立學生資料集
 students <- data.frame(
   id = integer(0),
   name = character(0),
@@ -12,13 +10,12 @@ students <- data.frame(
 current_id <- 0
 
 #* @get /students
-# 回傳所有學生資料
+
 function() {
   students
 }
 
 #* @post /students
-# 新增一名學生，並自動產生 id
 function(name, height, weight) {
   current_id <<- current_id + 1
   students <<- rbind(students, data.frame(
@@ -28,7 +25,7 @@ function(name, height, weight) {
     weight = as.numeric(weight)
   ))
   
-  # 儲存 current_id
+
   save(current_id, file = "current_id.RData")
   
   list(status = "Student added", id = current_id)
