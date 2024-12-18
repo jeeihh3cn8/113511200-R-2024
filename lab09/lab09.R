@@ -25,7 +25,7 @@ function(name, height, weight) {
     weight = as.numeric(weight)
   ))
   
-
+  
   save(current_id, file = "current_id.RData")
   
   list(status = "Student added", id = current_id)
